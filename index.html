@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GreenRides Rewards</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>🌱 GreenRides Rewards</h1>
+      <p>Encouraging sustainable public transit</p>
+    </header>
+
+    <main>
+      <!-- Trip Logging Form -->
+      <!-- Trip Logging Form -->
+      <section id="trip-logger">
+        <div class="nav">
+          <button onclick="window.location.href='dashboard.html'">
+            📊 Dashboard
+          </button>
+          <button onclick="location.href='wallet.html'">Wallet</button>
+        </div>
+
+        <h2>Log Your Trip</h2>
+        <form id="tripForm">
+          <label for="mode">Mode (Bus/Metro):</label>
+          <select id="mode" name="mode" required>
+            <option value="" disabled selected>Select mode</option>
+            <option value="bus">Bus</option>
+            <option value="metro">Metro</option>
+          </select>
+
+          <label for="from">From:</label>
+          <input
+            type="text"
+            id="from"
+            name="from"
+            required
+            placeholder="Source station"
+          />
+
+          <label for="to">To:</label>
+          <input
+            type="text"
+            id="to"
+            name="to"
+            required
+            placeholder="Destination station"
+          />
+
+          <button type="submit">Log Trip</button>
+        </form>
+        <p id="tripMessage" class="message"></p>
+      </section>
+
+      <div
+        id="map"
+        style="height: 300px; border-radius: 10px; margin-top: 20px"
+      ></div>
+
+      <!-- CO2 Tracker -->
+      <section id="co2-tracker">
+        <h2>Your CO2 Savings for this trip</h2>
+        <p>Total CO2 Saved (kg): <span id="co2Saved">0</span></p>
+        <p>Total Points Earned: <span id="points">0</span></p>
+      </section>
+
+      <!-- Rewards Wallet
+      <section id="wallet-section">
+        <h2>Rewards Wallet</h2>
+        <p>You have <span id="walletPoints">0</span> points.</p>
+        <p>Redeem your points with local businesses soon!</p>
+      </section> -->
+
+      <section id="tier-section">
+        <h2>Your Eco Tier</h2>
+        <p>Tier: <span id="tierName">Eco Newbie 🐣</span></p>
+        <div class="progress-container">
+          <div id="tierProgress" class="progress-bar"></div>
+        </div>
+        <p id="nextTierInfo"></p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Built with ❤️ by Team Nirvana for Innohax 2.0 Hackathon</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard | GreenRides Rewards</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>📊 Your Eco Dashboard</h1>
+    </header>
+
+    <main class="dashboard">
+      <section>
+        <p>
+          <strong>Total CO2 Saved:</strong> <span id="dashboardCO2">0</span> kg
+        </p>
+        <p>
+          <strong>Total Points Earned:</strong>
+          <span id="dashboardPoints">0</span> pts
+        </p>
+      </section>
+
+      <canvas id="co2Chart" width="400" height="200"></canvas>
+
+      <section id="redemptionHistory">
+        <h2>Redeemed Perks</h2>
+        <ul id="redeemedList"></ul>
+      </section>
+
+      <div style="margin-top: 20px; text-align: center">
+        <button onclick="window.location.href='index.html'">
+          ⬅️ Back to Home
+        </button>
+      </div>
+    </main>
+
+    <script src="dashboard.js"></script>
+  </body>
+</html>

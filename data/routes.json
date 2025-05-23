@@ -1,0 +1,44 @@
+[
+  { "from": "Rajiv Chowk", "to": "Kashmere Gate", "distance": 8.2, "mode": "metro" },
+  { "from": "MG Road", "to": "Majestic", "distance": 5.6, "mode": "metro" },
+  { "from": "Gachibowli", "to": "Miyapur", "distance": 10.3, "mode": "bus" },
+  { "from": "Baner", "to": "Pune Station", "distance": 12.5, "mode": "bus" },
+
+  { "from": "Jayanagar", "to": "Majestic", "distance": 7.4, "mode": "bus" },
+  { "from": "Kengeri", "to": "Yeshwantpur", "distance": 14.1, "mode": "metro" },
+  { "from": "Hinjewadi", "to": "Shivajinagar", "distance": 16.2, "mode": "bus" },
+  { "from": "Andheri", "to": "Ghatkopar", "distance": 6.8, "mode": "metro" },
+
+  { "from": "Velachery", "to": "Central", "distance": 14.7, "mode": "metro" },
+  { "from": "Thane", "to": "Dadar", "distance": 21.0, "mode": "metro" },
+  { "from": "Noida City Centre", "to": "Botanical Garden", "distance": 4.5, "mode": "metro" },
+  { "from": "Sector 62", "to": "Vaishali", "distance": 11.6, "mode": "metro" },
+
+  { "from": "Whitefield", "to": "KR Market", "distance": 13.5, "mode": "bus" },
+  { "from": "BEML Layout", "to": "Vijayanagar", "distance": 8.9, "mode": "bus" },
+  { "from": "Wakad", "to": "Swargate", "distance": 15.0, "mode": "bus" },
+  { "from": "Borivali", "to": "Churchgate", "distance": 23.4, "mode": "metro" },
+
+  { "from": "Chandni Chowk", "to": "AIIMS", "distance": 9.2, "mode": "metro" },
+  { "from": "Sarojini Nagar", "to": "Lajpat Nagar", "distance": 6.1, "mode": "metro" },
+  { "from": "Okhla", "to": "Hazrat Nizamuddin", "distance": 4.4, "mode": "metro" },
+  { "from": "Mehdipatnam", "to": "LB Nagar", "distance": 18.0, "mode": "bus" },
+
+  { "from": "Yelahanka", "to": "Electronic City", "distance": 24.7, "mode": "bus" },
+  { "from": "Malkajgiri", "to": "HiTech City", "distance": 19.3, "mode": "bus" },
+  { "from": "Kukatpally", "to": "Begumpet", "distance": 8.1, "mode": "metro" },
+  { "from": "Koyambedu", "to": "Guindy", "distance": 10.9, "mode": "metro" },
+
+  { "from": "Anna Nagar", "to": "Tambaram", "distance": 17.5, "mode": "bus" },
+  { "from": "Kalighat", "to": "Esplanade", "distance": 6.2, "mode": "metro" },
+  { "from": "Shyambazar", "to": "Dum Dum", "distance": 5.0, "mode": "metro" },
+  { "from": "Salt Lake", "to": "Howrah", "distance": 11.0, "mode": "bus" },
+
+  { "from": "Garia", "to": "Park Street", "distance": 12.6, "mode": "metro" },
+  { "from": "Kolkata Airport", "to": "Dumdum", "distance": 9.3, "mode": "bus" },
+  { "from": "Netaji Bhavan", "to": "Rabindra Sadan", "distance": 4.8, "mode": "metro" },
+
+  { "from": "Kharghar", "to": "Vashi", "distance": 10.0, "mode": "metro" },
+  { "from": "Viman Nagar", "to": "Hadapsar", "distance": 14.2, "mode": "bus" },
+  { "from": "Bandra", "to": "Santacruz", "distance": 3.5, "mode": "metro" }
+]

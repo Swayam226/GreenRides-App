@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Wallet</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Rewards Wallet</h1>
+      <button onclick="location.href='index.html'">Home</button>
+    </header>
+
+    <main>
+      <section>
+        <h2>Total Reward Points</h2>
+        <p style="font-size: 2rem; font-weight: bold">
+          🎉 <span id="walletPoints">0</span> Points
+        </p>
+      </section>
+
+      <section id="redeem">
+        <h2>Green Perks Store</h2>
+
+        <div class="reward">
+          <span>🌱 Plant a Tree Sticker</span>
+          <div class="reward-action">
+            <span class="points">100 pts</span>
+            <button onclick="redeemReward(100, 'Plant a Tree Sticker')">
+              Redeem
+            </button>
+          </div>
+        </div>
+
+        <div class="reward">
+          <span>☕ 50% Off Mock Coffee Pass</span>
+          <div class="reward-action">
+            <span class="points">200 pts</span>
+            <button onclick="redeemReward(200, 'Mock Coffee Pass')">
+              Redeem
+            </button>
+          </div>
+        </div>
+
+        <div class="reward">
+          <span>🎬 Movie Night Token</span>
+          <div class="reward-action">
+            <span class="points">300 pts</span>
+            <button onclick="redeemReward(300, 'Movie Night Token')">
+              Redeem
+            </button>
+          </div>
+        </div>
+
+        <div class="reward">
+          <span>🚲 Virtual E-Bike Badge</span>
+          <div class="reward-action">
+            <span class="points">500 pts</span>
+            <button onclick="redeemReward(500, 'Virtual E-Bike Badge')">
+              Redeem
+            </button>
+          </div>
+        </div>
+
+        <p id="redeemMessage" style="margin-top: 15px"></p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
