@@ -1,98 +1,230 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>GreenRides Rewards</title>
-    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: "class" };
+    </script>
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   </head>
-  <body>
-    <header>
-      <h1>🌱 GreenRides Rewards</h1>
-      <p>Encouraging sustainable public transit</p>
+  <body
+    class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white font-sans"
+  >
+    <header class="bg-green-600 text-white py-6 text-center shadow">
+      <h1 class="text-3xl font-bold">GreenRides Rewards</h1>
+      <p class="text-lg">Encouraging sustainable public transit</p>
     </header>
 
-    <main>
-      <!-- Trip Logging Form -->
-      <!-- Trip Logging Form -->
-      <section id="trip-logger">
-        <div class="nav">
-          <button onclick="window.location.href='dashboard.html'">
-            📊 Dashboard
+    <main class="max-w-2xl mx-auto px-4 py-6">
+      <!-- Navigation -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+        <button
+          onclick="window.location.href='dashboard.html'"
+          class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md w-full sm:w-auto"
+        >
+          📊 Dashboard
+        </button>
+        <button
+          onclick="document.documentElement.classList.toggle('dark')"
+          class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md w-full sm:w-auto"
+        >
+          🌓 Toggle Dark Mode
+        </button>
+        <button
+          onclick="window.location.href='wallet.html'"
+          class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md w-full sm:w-auto"
+        >
+          💼 Wallet
+        </button>
+        <button
+          onclick="logout()"
+          class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md w-full sm:w-auto"
+        >
+          Logout
+        </button>
+      </div>
+
+      <!-- Trip Form -->
+      <section class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md mb-6">
+        <h2
+          class="text-xl font-semibold mb-4 text-green-700 dark:text-green-300"
+        >
+          Log Your Trip
+        </h2>
+        <form id="tripForm" class="space-y-4">
+          <div>
+            <label for="mode" class="block font-medium">Mode (Bus/Metro)</label>
+            <select
+              id="mode"
+              name="mode"
+              required
+              class="w-full p-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white"
+            >
+              <option value="" disabled selected>Select mode</option>
+              <option value="bus">Bus</option>
+              <option value="metro">Metro</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="from" class="block font-medium">From:</label>
+            <input
+              type="text"
+              id="from"
+              name="from"
+              required
+              placeholder="Source station"
+              class="w-full p-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+
+          <div>
+            <label for="to" class="block font-medium">To:</label>
+            <input
+              type="text"
+              id="to"
+              name="to"
+              required
+              placeholder="Destination station"
+              class="w-full p-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-md"
+          >
+            Log Trip
           </button>
-          <button onclick="location.href='wallet.html'">Wallet</button>
-        </div>
-
-        <h2>Log Your Trip</h2>
-        <form id="tripForm">
-          <label for="mode">Mode (Bus/Metro):</label>
-          <select id="mode" name="mode" required>
-            <option value="" disabled selected>Select mode</option>
-            <option value="bus">Bus</option>
-            <option value="metro">Metro</option>
-          </select>
-
-          <label for="from">From:</label>
-          <input
-            type="text"
-            id="from"
-            name="from"
-            required
-            placeholder="Source station"
-          />
-
-          <label for="to">To:</label>
-          <input
-            type="text"
-            id="to"
-            name="to"
-            required
-            placeholder="Destination station"
-          />
-
-          <button type="submit">Log Trip</button>
         </form>
-        <p id="tripMessage" class="message"></p>
+
+        <p
+          id="tripMessage"
+          class="mt-2 text-sm text-green-600 dark:text-green-300"
+        ></p>
       </section>
 
-      <div
-        id="map"
-        style="height: 300px; border-radius: 10px; margin-top: 20px"
-      ></div>
+      <!-- Map -->
+      <div id="map" class="h-72 rounded-xl mb-6"></div>
 
       <!-- CO2 Tracker -->
-      <section id="co2-tracker">
-        <h2>Your CO2 Savings for this trip</h2>
-        <p>Total CO2 Saved (kg): <span id="co2Saved">0</span></p>
-        <p>Total Points Earned: <span id="points">0</span></p>
+      <section class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md mb-6">
+        <h2
+          class="text-xl font-semibold text-green-700 dark:text-green-300 mb-2"
+        >
+          Your CO₂ Savings for This Trip
+        </h2>
+        <p>
+          Total CO₂ Saved (kg): <span id="co2Saved" class="font-bold">0</span>
+        </p>
+        <p>Total Points Earned: <span id="points" class="font-bold">0</span></p>
       </section>
 
-      <!-- Rewards Wallet
-      <section id="wallet-section">
-        <h2>Rewards Wallet</h2>
-        <p>You have <span id="walletPoints">0</span> points.</p>
-        <p>Redeem your points with local businesses soon!</p>
-      </section> -->
-
-      <section id="tier-section">
-        <h2>Your Eco Tier</h2>
-        <p>Tier: <span id="tierName">Eco Newbie 🐣</span></p>
-        <div class="progress-container">
-          <div id="tierProgress" class="progress-bar"></div>
+      <!-- Tier Section -->
+      <section
+        id="tier-section"
+        class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md mb-6 text-center"
+      >
+        <h2
+          class="text-xl font-semibold text-green-700 dark:text-green-300 mb-2"
+        >
+          Your Eco Tier
+        </h2>
+        <p class="mb-2">
+          Tier: <span id="tierName" class="font-bold">Eco Newbie 🐣</span>
+        </p>
+        <div
+          class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-4 mb-2 overflow-hidden"
+        >
+          <div
+            id="tierProgress"
+            class="h-full bg-green-500 dark:bg-green-400"
+            style="width: 0%; transition: width 0.3s ease"
+          ></div>
         </div>
-        <p id="nextTierInfo"></p>
+        <p
+          id="nextTierInfo"
+          class="text-sm text-gray-600 dark:text-gray-300"
+        ></p>
       </section>
     </main>
 
-    <footer>
-      <p>Built with ❤️ by Team Nirvana for Innohax 2.0 Hackathon</p>
+    <footer class="text-center text-sm text-gray-600 dark:text-gray-300 py-4">
+      Built with ❤️ by Team Nirvana for Innohax 2.0 Hackathon
     </footer>
 
+    <!-- Trip Verification Modal -->
+    <div
+      id="verificationModal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden transition-opacity duration-300"
+    >
+      <div
+        id="modalContent"
+        class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg text-center transition-all duration-300"
+      >
+        <div id="loadingSpinner" class="flex flex-col items-center">
+          <svg
+            class="w-12 h-12 text-green-600 animate-spin mb-4"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8z"
+            ></path>
+          </svg>
+          <p class="text-lg font-semibold text-green-700 dark:text-green-300">
+            Verifying your trip...
+          </p>
+        </div>
+
+        <div id="successCheck" class="hidden flex flex-col items-center">
+          <svg
+            class="w-12 h-12 text-green-600 mb-4"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="3"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+          <p class="text-lg font-semibold text-green-700 dark:text-green-300">
+            Trip Verified Successfully!
+          </p>
+        </div>
+      </div>
+    </div>
+
     <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script>
+      function logout() {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("currentUser");
+        window.location.href = "auth.html";
+      }
+    </script>
   </body>
 </html>

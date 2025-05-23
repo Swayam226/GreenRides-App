@@ -173,8 +173,26 @@ function setupTripForm() {
         pointsEl.textContent = totalPoints;
         if (walletPointsEl) walletPointsEl.textContent = totalPoints;
 
-        messageEl.textContent = `Logged ${modeInput} trip (${distance} km). +${earnedPoints} points!`;
-        drawRoute(fromInput, toInput);
+        // Show modal with spinner
+        document.getElementById("verificationModal").classList.remove("hidden");
+        document.getElementById("loadingSpinner").classList.remove("hidden");
+        document.getElementById("successCheck").classList.add("hidden");
+
+        // Simulate API verification delay
+        setTimeout(() => {
+            // Hide spinner, show checkmark
+            document.getElementById("loadingSpinner").classList.add("hidden");
+            document.getElementById("successCheck").classList.remove("hidden");
+
+            // After another 1.5s, close modal and update message
+            setTimeout(() => {
+                document.getElementById("verificationModal").classList.add("hidden");
+                messageEl.textContent = `✅ Logged ${modeInput} trip (${distance} km). +${earnedPoints} points!`;
+                messageEl.style.color = 'green';
+            }, 1500);
+        }, 2000); // initial verification delay
+
+
 
         messageEl.style.color = 'green';
 

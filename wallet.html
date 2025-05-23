@@ -1,68 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <title>Wallet</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Wallet | GreenRides Rewards</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: "class" };
+    </script>
   </head>
-  <body>
-    <header>
-      <h1>Rewards Wallet</h1>
-      <button onclick="location.href='index.html'">Home</button>
+  <body
+    class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white font-sans"
+  >
+    <header class="bg-green-600 text-white py-6 text-center shadow">
+      <h1 class="text-3xl font-bold">🎒 Rewards Wallet</h1>
+      <div class="mt-4 flex justify-center gap-4">
+        <button
+          onclick="location.href='index.html'"
+          class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md w-full sm:w-auto"
+        >
+          ⬅️ Home
+        </button>
+        <button
+          onclick="document.documentElement.classList.toggle('dark')"
+          class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md w-full sm:w-auto"
+        >
+          🌓 Toggle Dark Mode
+        </button>
+      </div>
     </header>
 
-    <main>
-      <section>
-        <h2>Total Reward Points</h2>
-        <p style="font-size: 2rem; font-weight: bold">
+    <main class="max-w-2xl mx-auto px-4 py-8">
+      <section
+        class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow mb-6 text-center"
+      >
+        <h2
+          class="text-xl font-semibold text-green-700 dark:text-green-300 mb-2"
+        >
+          Total Reward Points
+        </h2>
+        <p class="text-4xl font-bold">
           🎉 <span id="walletPoints">0</span> Points
         </p>
       </section>
 
-      <section id="redeem">
-        <h2>Green Perks Store</h2>
+      <section
+        id="redeem"
+        class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow"
+      >
+        <h2
+          class="text-xl font-semibold text-green-700 dark:text-green-300 mb-4"
+        >
+          Green Perks Store
+        </h2>
 
-        <div class="reward">
-          <span>🌱 Plant a Tree Sticker</span>
-          <div class="reward-action">
-            <span class="points">100 pts</span>
-            <button onclick="redeemReward(100, 'Plant a Tree Sticker')">
-              Redeem
-            </button>
+        <div class="space-y-4">
+          <div
+            class="flex flex-col sm:flex-row justify-between items-center bg-green-50 dark:bg-green-900 p-4 rounded-lg"
+          >
+            <span class="mb-2 sm:mb-0">🌱 Plant a Tree Sticker</span>
+            <div class="flex items-center gap-4">
+              <span class="font-semibold text-green-700 dark:text-green-300"
+                >100 pts</span
+              >
+              <button
+                onclick="redeemReward(100, 'Plant a Tree Sticker')"
+                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md"
+              >
+                Redeem
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="flex flex-col sm:flex-row justify-between items-center bg-green-50 dark:bg-green-900 p-4 rounded-lg"
+          >
+            <span class="mb-2 sm:mb-0">☕ 50% Off Mock Coffee Pass</span>
+            <div class="flex items-center gap-4">
+              <span class="font-semibold text-green-700 dark:text-green-300"
+                >200 pts</span
+              >
+              <button
+                onclick="redeemReward(200, 'Mock Coffee Pass')"
+                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md"
+              >
+                Redeem
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="flex flex-col sm:flex-row justify-between items-center bg-green-50 dark:bg-green-900 p-4 rounded-lg"
+          >
+            <span class="mb-2 sm:mb-0">🎬 Movie Night Token</span>
+            <div class="flex items-center gap-4">
+              <span class="font-semibold text-green-700 dark:text-green-300"
+                >300 pts</span
+              >
+              <button
+                onclick="redeemReward(300, 'Movie Night Token')"
+                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md"
+              >
+                Redeem
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="flex flex-col sm:flex-row justify-between items-center bg-green-50 dark:bg-green-900 p-4 rounded-lg"
+          >
+            <span class="mb-2 sm:mb-0">🚲 Virtual E-Bike Badge</span>
+            <div class="flex items-center gap-4">
+              <span class="font-semibold text-green-700 dark:text-green-300"
+                >500 pts</span
+              >
+              <button
+                onclick="redeemReward(500, 'Virtual E-Bike Badge')"
+                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md"
+              >
+                Redeem
+              </button>
+            </div>
           </div>
         </div>
 
-        <div class="reward">
-          <span>☕ 50% Off Mock Coffee Pass</span>
-          <div class="reward-action">
-            <span class="points">200 pts</span>
-            <button onclick="redeemReward(200, 'Mock Coffee Pass')">
-              Redeem
-            </button>
-          </div>
-        </div>
-
-        <div class="reward">
-          <span>🎬 Movie Night Token</span>
-          <div class="reward-action">
-            <span class="points">300 pts</span>
-            <button onclick="redeemReward(300, 'Movie Night Token')">
-              Redeem
-            </button>
-          </div>
-        </div>
-
-        <div class="reward">
-          <span>🚲 Virtual E-Bike Badge</span>
-          <div class="reward-action">
-            <span class="points">500 pts</span>
-            <button onclick="redeemReward(500, 'Virtual E-Bike Badge')">
-              Redeem
-            </button>
-          </div>
-        </div>
-
-        <p id="redeemMessage" style="margin-top: 15px"></p>
+        <p
+          id="redeemMessage"
+          class="mt-6 text-center text-green-600 dark:text-green-300 text-sm"
+        ></p>
       </section>
     </main>
 

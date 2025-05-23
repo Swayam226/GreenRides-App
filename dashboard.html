@@ -1,37 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Dashboard | GreenRides Rewards</title>
-    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: "class" };
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
-  <body>
-    <header>
-      <h1>📊 Your Eco Dashboard</h1>
+  <body
+    class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white font-sans"
+  >
+    <header class="bg-green-600 text-white py-6 text-center shadow-md">
+      <h1 class="text-3xl font-bold">📊 Your Eco Dashboard</h1>
     </header>
 
-    <main class="dashboard">
-      <section>
-        <p>
-          <strong>Total CO2 Saved:</strong> <span id="dashboardCO2">0</span> kg
+    <main class="max-w-3xl mx-auto px-4 py-8 space-y-8">
+      <button
+        onclick="document.documentElement.classList.toggle('dark')"
+        class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md w-full sm:w-auto"
+      >
+        🌓 Toggle Dark Mode
+      </button>
+      <section
+        class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md text-center"
+      >
+        <p class="text-lg mb-2">
+          <strong>Total CO₂ Saved:</strong>
+          <span
+            id="dashboardCO2"
+            class="font-bold text-green-700 dark:text-green-300"
+            >0</span
+          >
+          kg
         </p>
-        <p>
+        <p class="text-lg">
           <strong>Total Points Earned:</strong>
-          <span id="dashboardPoints">0</span> pts
+          <span
+            id="dashboardPoints"
+            class="font-bold text-green-700 dark:text-green-300"
+            >0</span
+          >
+          pts
         </p>
       </section>
 
-      <canvas id="co2Chart" width="400" height="200"></canvas>
-
-      <section id="redemptionHistory">
-        <h2>Redeemed Perks</h2>
-        <ul id="redeemedList"></ul>
+      <section class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+        <h2
+          class="text-xl font-semibold mb-4 text-green-700 dark:text-green-300 text-center"
+        >
+          Weekly CO₂ Savings
+        </h2>
+        <canvas id="co2Chart" class="w-full h-64"></canvas>
       </section>
 
-      <div style="margin-top: 20px; text-align: center">
-        <button onclick="window.location.href='index.html'">
+      <section
+        id="redemptionHistory"
+        class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md"
+      >
+        <h2
+          class="text-xl font-semibold mb-4 text-green-700 dark:text-green-300"
+        >
+          Redeemed Perks
+        </h2>
+        <ul
+          id="redeemedList"
+          class="list-disc pl-6 space-y-2 text-sm text-gray-800 dark:text-gray-200"
+        ></ul>
+      </section>
+
+      <div class="text-center">
+        <button
+          onclick="window.location.href='index.html'"
+          class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md"
+        >
           ⬅️ Back to Home
         </button>
       </div>
