@@ -1,7 +1,3 @@
-# **Important**
-
-**Please Make sure to use only the routes data from the routes.json file for testing the product as real-time integration of routes is described in the Future Enhancements section**
-
 # 🌱 GreenRides Rewards
 
 **Incentivizing Sustainable Public Transit in India — One Trip at a Time**
