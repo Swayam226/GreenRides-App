@@ -48,11 +48,18 @@ Built to **encourage sustainable commuting behavior**, the platform uses tier sy
 
 ## 📈 Future Enhancements
 
-- 🔄 QR code integration for auto-trip logging
-- 🌐 Live map + geolocation-based route tracking
-- 🤝 UPI/Metro card integration for real-time validation
-- 🏙️ City-wide leaderboards and community challenges
-- 💼 Business dashboard for reward partners and sponsors
+- 🔄 **QR Code Logging**  
+  Allow quick trip logging via QR scans at metro gates or bus stops.
+- 🌐 **Real-Time Validation with Transit.land + GPS**  
+  Use Transit.land to verify route, then ping user’s location every 30s to confirm they’re following the route. Validate trip if ≥80% of stops are passed.
+- 🤝 **UPI & Metro Card Sync**  
+  Automate trip validation via fare payments using UPI or metro card integrations.
+- 🏙️ **Leaderboards & Eco Challenges**  
+  Gamify green commuting with city-wide rankings and weekly sustainability goals.
+- 🪙 **Web3 Token Rewards**  
+  Launch an ERC-20 token using **Thirdweb** on **Polygon Amoy**, with **MetaMask** wallet support to enable decentralized, verifiable incentives.
+
+
 
 ---
 
